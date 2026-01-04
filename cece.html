@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Quieres ser mi novia?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --card: #171722;
+      --accent: #f705f7;
+      --accent-soft: rgba(250, 107, 255, 0.014);
+      --text: #f4f4f7;
+      --muted: #b9b9c7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(173, 47, 247, 0.15), transparent 60%), var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero {
+      max-width: 920px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.63);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.1;
+      margin: .5rem 0 1rem;
+    }
+
+    p.lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: .9rem 1.6rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f705f7, #f705f7);
+      color: #111;
+      box-shadow: 0 10px 30px rgba(222, 11, 241, 0.171);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(186, 58, 197, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: .5rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      aspect-ratio: 4 / 5;
+      background: #222;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.08);
+    }
+
+    .photo span {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+      font-size: .95rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 22px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(235, 93, 248, 0.034);
+    }
+
+    .question {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 3.5rem 1.2rem; }
+      .card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero">
+      <div class="badge">Para alguien muy especial</div>
+      <h1>Hay algo que quiero preguntarte…</h1>
+      <p class="lead">Desde que llegaste a mi vida, todo tiene más sentido. Cada risa, cada momento y cada recuerdo me hicieron llegar hasta aquí.</p>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="document.getElementById('pregunta').scrollIntoView({behavior:'smooth'})">Seguir leyendo</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('fotos').scrollIntoView({behavior:'smooth'})">Ver recuerdos</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- GALERÍA -->
+  <section id="fotos">
+    <div class="section-title">
+      <h2>Nuestros momentos</h2>
+      <p>Algunos recuerdos que guardo y que quiero seguir creando contigo.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="photo">
+        <img src="img/img1.jpeg" alt="Recuerdo 1">
+      </div>
+      <div class="photo">
+        <img src="img/img2.jpeg" alt="Recuerdo 2">
+      </div>
+      <div class="photo">
+        <img src="img/img3.jpeg" alt="Recuerdo 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTA FINAL -->
+  <section id="pregunta">
+    <div class="card">
+      <p class="question">¿Quieres ser mi novia?</p>
+      <p class="lead">Prometo cuidarte, apoyarte y elegirte todos los días. No porque sea perfecto, sino porque contigo quiero ser mejor.</p>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="alert('💖 Sabía que dirías que sí 💖')">Sí</button>
+        <button class="btn btn-secondary" onclick="alert('Volve y pone que si salame 😒')">Necesito pensarlo</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Te amoooooo mushooo 💕
+  </footer>
+
+</body>
+</html>
